@@ -1,5 +1,7 @@
 # techinfo-backup
 
+requires active techinfo subscription
+
 ## macOS
 
 ```
