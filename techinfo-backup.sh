@@ -1,5 +1,14 @@
 # ID = from techinfo index.html url
-ID=$1
+#ID=$1
+DATE=$(date)
+
+echo "$DATE startup" >> progress.log
+
+for ID in `cat service-manual-id-uniq-reverse.txt`; do
+
+DATE=$(date)
+
+echo "$DATE $ID" >> progress.log
 
 mkdir $ID
 cd $ID
@@ -15,3 +24,8 @@ wget --mirror --convert-links --adjust-extension \
   --page-requisites --no-parent --progress=dot \
   --recursive --load-cookies=../cookies.txt --user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.6 Safari/605.1.15" https://www.subaru-repairinfo.com/scr/doc/serviceManual/$ID/contents/data/print/$i.html
 done
+cd ..
+done
+
+DATE=$(date)
+echo "$DATE done" >> progress.log
